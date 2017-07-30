@@ -1,0 +1,146 @@
+
+<div id="container" stage="" ng-drop="true" ng-drop-success="onDropComplete($data,$event)" ng-style="{'background-image':'url({{floorData.url}})'}" ></div>
+
+<div id="accordion-resizer">
+
+	<div id="accordion" class="wrapper">
+	</div>
+
+	<h3>Sensors</h3>
+	<div>
+		<p>	List of Sensors' icons </p>
+		<div id="sensors_list">
+			<!--<img id="sensor_1" class="sensor" data-name="sensor1" src="img/square-stripped.png"> 
+		    <img id="sensor_2" class="sensor" data-name="sensor2" width=32 height=32 src="img/images.png"> -->
+            <div ng-repeat="s in sensors">
+                <img  class="sensor" id="{{s.id}}"  data-name="{{s.name}}" ng-src="img/images.png" ng-drag="true" ng-drag-data="{{s}}" ng-drag-success="onDragComplete($data,$event)" ng-center-anchor="true">
+                <br>
+            </div>
+            
+		</div>
+
+	</div>
+
+
+</div>
+
+<div>
+    <input type="file" file-model="myFile"/>
+    <button ng-click="uploadFile()">upload me</button>
+</div>
+
+<div>
+    <button ng-click="save()">Save Changes</button>
+</div>
+
+
+
+
+
+<!-- <script type="text/javascript">
+	// drawing the accordion
+$( "#accordion" ).accordion({
+      heightStyle: "fill"
+ });
+// get a reference to the house icon
+
+
+// get the offset position of the Konva container
+var $stageContainer = $("#container");
+var $sensorsList = $("#sensors_list");
+var stageOffset = $stageContainer.offset();
+var offsetX = stageOffset.left;
+var offsetY = stageOffset.top;
+
+// create the Konva.Stage and layer
+var stage = new Konva.Stage({
+    container: 'container',
+    width: 600,
+    height: 600
+});
+
+var layer = new Konva.Layer();
+
+//create a group
+var group = new Konva.Group({
+    draggable: true //make group draggable
+});
+
+   
+group.on('mouseover', function() {
+	document.body.style.cursor = 'pointer';
+});
+
+group.on('mouseout', function() {
+	document.body.style.cursor = 'default';
+});
+
+layer.add(group);
+stage.add(layer);
+
+
+// handle a drop into the Konva container
+function dragDrop(e, ui) {
+    // get the drop point
+    var x = parseInt(ui.offset.left - offsetX, 10);
+    var y = parseInt(ui.offset.top - offsetY, 10);
+
+    console.log("Dropped at ",x,y,ui);
+
+    // get the drop payload (here the payload is the image)
+    var element = ui.draggable;
+    console.log(element);
+    var data = element.data("name");
+    var theImage = element.data("image");
+
+
+    // // create a new Konva.Image at the drop point
+    // // be sure to adjust for any border width (here border==1)
+    var image = new Konva.Image({
+        name: data,
+        x: x,
+        y: y,
+        image: theImage,
+        draggable: true
+    });    
+    
+    image.on('dblclick', function() {
+        image.remove();
+        layer.draw();
+    });
+
+    // $(this).append(element);
+    
+
+    var $clone = ui.helper.clone();
+    // $(element).hide();
+    // all clones are draggable
+    // if clone is shape then draggable + resizable
+    if (!$clone.is('.inside-droppable')) {
+        $(this).append($clone
+        	.draggable({
+                containment: $stageContainer,
+				tolerance: 'fit',
+                cursor: 'pointer',
+				position: 'relative'             
+          	}));
+        
+        if ($clone.is(".sensor") === false) {
+                $clone.resizable({
+					containment: $stageContainer
+                });          
+        }
+        $clone.on('dblclick', function () {
+            $clone.remove();
+            layer.draw();
+        });
+    }
+    group.add(image);
+    layer.add(group);
+    stage.add(layer);
+}
+
+
+
+
+</script> -->

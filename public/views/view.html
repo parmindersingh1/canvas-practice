@@ -1,0 +1,14 @@
+
+<div id="container" stage=""  ng-style="{'background-image':'url({{floorData.url}}) no-repeat'}"></div>
+
+<div >
+
+	<ul>
+	  <li ng-repeat="zone in responseData">
+	  	<button ng-click="onClick(zone)">{{zone.name}}</button>
+	  </li>
+	</ul>
+
+
+</div>
+

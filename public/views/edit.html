@@ -1,0 +1,35 @@
+
+<div id="container" stage="" ng-drop="true" ng-drop-success="onDropComplete($data,$event)" ng-style="{'background-image':'url({{floorData.url}})'}"></div>
+
+<div id="accordion-resizer">
+
+	<div id="accordion" class="wrapper">
+	</div>
+
+	<h3>Sensors</h3>
+	<div>
+		<p>	List of Sensors' icons </p>
+		<div id="sensors_list">
+			<!--<img id="sensor_1" class="sensor" data-name="sensor1" src="img/square-stripped.png"> 
+		    <img id="sensor_2" class="sensor" data-name="sensor2" width=32 height=32 src="img/images.png"> -->
+            <div ng-repeat="s in sensors">
+                <img  class="sensor" id="{{s.id}}"  data-name="{{s.name}}" ng-src="img/images.png" ng-drag="true" ng-drag-data="{{s}}" ng-drag-success="onDragComplete($data,$event)" ng-center-anchor="true">
+                <br>
+            </div>
+            
+		</div>
+
+	</div>
+
+
+</div>
+
+<div>
+    <input type="file" file-model="myFile"/>
+    <button ng-click="uploadFile()">upload me</button>
+</div>
+
+<div>
+    <button ng-click="save()">Save Changes</button>
+</div>
+

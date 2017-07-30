@@ -1,0 +1,1 @@
+angular.module('sampleApp', ['ngRoute', 'appRoutes', 'appDirectives', 'ngDraggable', 'MainCtrl', 'NerdCtrl', 'EditCtrl', 'ViewCtrl', 'NerdService', 'GeekCtrl', 'GeekService', 'SensorsService']);
