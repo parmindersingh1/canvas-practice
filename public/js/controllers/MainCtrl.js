@@ -20,7 +20,8 @@ angular.module('MainCtrl', []).controller('MainController', function($scope, Sen
 	var img = new Image();
 	img.onload = function() {
 	  alert(this.width + 'x' + this.height);
-	  $('#container').
+	  $('#container').width(this.width);
+	  $('#container').height(this.height);
 	}
 	img.src = $scope.floorData.url;
 	
